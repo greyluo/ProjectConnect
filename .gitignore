@@ -1,0 +1,42 @@
+# General
+node_modules/
+.DS_Store
+*.log
+*.log.*
+*.log.*
+*.pid
+*.seed
+*.cmd
+*.gz
+*.sqlite
+
+# React Frontend
+/build
+/.cache
+/public
+/.env*
+/.eslintcache
+/.idea
+.npm
+.npmrc
+.yarn-integrity
+coverage/
+*.swp
+*.swo
+
+# Flask Backend
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.pyc
+.Python
+env/
+venv/
+ENV/
+env.bak/
+.venv.bak/
+*.sqlite3
+*.sqlite3-journal
+my_project_env/
+
