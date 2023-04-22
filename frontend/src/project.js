@@ -3,10 +3,14 @@ import { useState } from 'react';
 function Project(types)
 {
     const [status, setStatus] = useState('open');
+    function closePost() {
+        setStatus('closed');
+    }
     return (
+
         <div>
             <h1>Project</h1>
-            <form className='project' action='/api/update-project' onSubmit={handleSubmit}>
+            <form className='project' action='/api/update-project' method='POST'>
                 <label htmlFor='projectName'>Project Name</label>
                 <input type='text' id='projectName' name='projectName' />
 
@@ -34,7 +38,7 @@ function Project(types)
                 <button type="button" onClick={closePost}>Close Project</button>
                 {/* if status is closed, then disable the submit button */}
                 {/* if not filled out, then disable the submit button */}
-                <button type="submit" disabled={status === 'closed' || !projectName || !projectDescription || !projectType || !projectStartDate || !projectEndDate}>Submit</button>
+                <button type="submit" disabled={status === 'closed'}>Submit</button>
 </form>
         </div>
     );

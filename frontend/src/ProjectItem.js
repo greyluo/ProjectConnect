@@ -19,10 +19,10 @@ function ProjectItem(project) {
 
     return (
         <div className="project-item">
-        <h2>{projects.name}</h2>
+        <h2>{project.name}</h2>
         <p>{projectPreview}</p>
-        <p>{projects.dueDate}</p>
-        <p>{projects.status}</p>
+        <p>{project.dueDate}</p>
+        <p>{project.status}</p>
         </div>
     );
 }

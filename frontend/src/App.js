@@ -3,6 +3,7 @@ import './App.css';
 import Profile from './Profile';
 import { useState, useEffect } from 'react';
 import Project from './project';
+import ProjectList from './ProjectList';
 
 
 
@@ -20,7 +21,7 @@ function App() {
     fetch('/frontend/src/data/data.json')
       .then(response => response.json())
       .then(data => setProjectTypes(data))
-      .catch(error => setError(error));
+      .catch(error => console.error(error));
   }, []);
 
 
@@ -29,7 +30,7 @@ function App() {
     <div className="App">
         <Profile></Profile>
         // onclick goes to a new project page
-        <button type="button" onClick={newProject}>New Project</button>
+        <button type="button" >New Project</button>
         <ProjectList projects={projects} types = {projectTypes}></ProjectList>
     </div>
 

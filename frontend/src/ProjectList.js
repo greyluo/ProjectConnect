@@ -1,5 +1,6 @@
 import React from "react";
 import { useState, useEffect } from "react";
+import ProjectItem from "./ProjectItem";
 
 function ProjectList(projects) {
     return (
@@ -8,6 +9,6 @@ function ProjectList(projects) {
                 <ProjectItem key={project.id} project={project} />
             ))}
         </div>
+    );
 }
-
 export default ProjectList;
