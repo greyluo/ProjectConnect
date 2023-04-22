@@ -1,8 +1,8 @@
 # ProjectConnect
 LA-Hacks-23
 
-Certainly! A project idea to help students pair with their interested projects is "ProjectConnect."
-Project Idea: "ProjectConnect" Track: Home Room
+## Project Idea: "ProjectConnect" Track: Home Room
+
 ProjectConnect is a web-based platform designed to connect students with academic, research, or extracurricular projects that align with their interests, skills, and goals. The platform helps students discover and join projects led by other students, faculty members, or external organizations. Some key features of ProjectConnect include:
 Interest-based project matching: Students create a profile outlining their interests, skills, and academic background. The platform uses an AI-driven algorithm to recommend projects that align with their preferences.
 Project creation and collaboration: Users can create new projects and define the roles, skills, and expertise needed for the project. Students interested in the project can apply to join or be invited by the project creator.
