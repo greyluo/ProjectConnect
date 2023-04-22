@@ -16,7 +16,9 @@ Overall, ProjectConnect combines the elements of project discovery, collaboratio
 5. Networking and community building: Students can connect with peers, faculty, and industry professionals involved in projects, fostering a sense of community and creating valuable networking opportunities.
 
 
+## Collaborators: 
 
+## Github repo: 
 
 
 
