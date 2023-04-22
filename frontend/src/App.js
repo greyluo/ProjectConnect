@@ -28,8 +28,7 @@ function App() {
           <Routes>
             <Route exact path="/" element={<Home />} />
             <Route path="/project-page" element={<ProjectPage types={projectTypes} />} />
-            <Route path="/profile" element={<Profile />} />
-            <Route path="*" element={<NotFound />} />
+            <Route path="/*" element={<NotFound />} />
           </Routes>
       </Router>
   );
