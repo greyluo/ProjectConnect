@@ -1,8 +1,11 @@
 import React from 'react';
 import { useState } from 'react';
 import withAuth from './withAuth';
-function ProjectPage(types)
+function ProjectPage(props)
+
 {
+    const types = props.types;
+    console.log(types)
     const [status, setStatus] = useState('open');
     function closePost() {
         setStatus('closed');
@@ -21,9 +24,8 @@ function ProjectPage(types)
                 <label htmlFor='projectType'>Project Type</label>
                 <select id='projectType' name='projectType'>
                     <option value=''>Select</option>
-                    {/* {types &&  Object.keys(types).map((type) => ( */}
-                    {types && types.map((type) => (
-                    <option key={type} value={type}>{type}</option>
+                    {types["projectType"].map((type) => (
+                        <option key={type.type} value={type.type}>{type.type}</option>
                     ))}
                 </select>
 
@@ -48,4 +50,5 @@ function ProjectPage(types)
 
 }
 
-export default withAuth(ProjectPage);
+/* export default withAuth(ProjectPage); */
+export default ProjectPage;

@@ -48,6 +48,9 @@ app.get('/api/get_projects', (req, res) => {
     res.json({ status: 'success', projects: projects });
   });
 });
+app.get('/api/', (req, res) => {
+  res.send('Hello World!');
+});
 
 app.post('/api/update_profile', (req, res) => {
   const { username, skills, bio } = req.body;
