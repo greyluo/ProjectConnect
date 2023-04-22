@@ -8,11 +8,7 @@ import Profile from './Profile';
 function Home(props) {
   const [projects, setProjects] = useState(null);
   const [projectTypes, setProjectTypes] = useState(null);
-
-
-
   return (
-
     <div className="home">
       <Profile></Profile>
         <button type="button" >New Project</button>

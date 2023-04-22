@@ -28,13 +28,9 @@ function App() {
     <div className="App">
         <Router>
         <Routes>
-          <Route exact path="/" component={Home} />
+          <Route exact path="/" element={<Home/>} />
           <Route
-            path="/project-page"
-            render={(routeProps) => (
-              <ProjectPage {...routeProps} types={projectTypes} />
-            )}
-          />
+            path="/project-page" element={<ProjectPage stypes={projectTypes} />} />
         </Routes>
     </Router>
     </div>
