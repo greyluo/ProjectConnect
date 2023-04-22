@@ -12,7 +12,7 @@ function Home(props) {
   return (
     <div className="home">
       <Profile></Profile>
-      <Link to="/project—page">
+      <Link to="/project-page">
         <button  >New Project</button>
       </Link>
       <ProjectList projects={projects} types = {projectTypes}></ProjectList>
