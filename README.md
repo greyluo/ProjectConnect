@@ -1,7 +1,7 @@
 # ProjectConnect -- LA-Hacks-23
 ## Project Idea: "ProjectConnect" / Track: Home Room
 
-ProjectConnect is a web-based platform designed to connect students with academic, research, or extracurricular projects that align with their interests, skills, and goals. The platform helps students discover and join their preferred projects led by other students, faculty members, or external organizations. 
+ProjectConnect is a web-based platform designed to connect students with academic, research, or extracurricular projects that align with their interests, skills, and goals. The platform helps students discover and join their preferred projects led by other students, faculty members, or external organizations.
 
 
 
@@ -16,9 +16,9 @@ Overall, ProjectConnect combines the elements of project discovery, collaboratio
 5. Networking and community building: Students can connect with peers, faculty, and industry professionals involved in projects, fostering a sense of community and creating valuable networking opportunities.
 
 
-## Collaborators: 
+## Collaborators:
 
-## Github repo: 
+## Github repo:
 
 
 

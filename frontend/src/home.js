@@ -5,6 +5,10 @@ import ProjectList from './ProjectList';
 import { Link } from 'react-router-dom';
 import Profile from './Profile';
 
+import data from './data/ProjectTypes.json';
+import Select from 'react-select';
+import ReactDOM from 'react-dom/client';
+
 
 function Home(props) {
   const [projects, setProjects] = useState(null);
@@ -20,5 +24,6 @@ function Home(props) {
   )
 
 }
+
 
 export default Home;

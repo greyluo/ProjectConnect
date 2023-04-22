@@ -7,6 +7,7 @@ function ProjectPage(types)
     function closePost() {
         setStatus('closed');
     }
+
     return (
 
         <div>
@@ -40,7 +41,7 @@ function ProjectPage(types)
                 {/* if status is closed, then disable the submit button */}
                 {/* if not filled out, then disable the submit button */}
                 <button type="submit" disabled={status === 'closed'}>Submit</button>
-        </form>
+            </form>
         </div>
     );
 

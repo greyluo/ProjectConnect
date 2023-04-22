@@ -7,6 +7,7 @@ import ProjectList from './ProjectList';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Home from './home';
 import ProjectPage from './projectPage';
+import NotFound from './NotFound';
 
 
 function App() {
@@ -25,16 +26,14 @@ function App() {
       .catch(error => console.error(error));
   }, []);
   return (
-    <div className="App">
-        <Router>
-        <Routes>
-          <Route exact path="/" element={<Home/>} />
-          <Route
-            path="/project-page" element={<ProjectPage types={projectTypes} />} />
-        </Routes>
-    </Router>
-    </div>
-
+      <Router>
+          <Routes>
+            <Route exact path="/" element={<Home />} />
+            <Route path="/project-page" element={<ProjectPage types={projectTypes} />} />
+            <Route path="/profile" element={<Profile />} />
+            <Route path="*" element={<NotFound />} />
+          </Routes>
+      </Router>
   );
 }
 

@@ -15,6 +15,7 @@ def handle_user_data():
     data = request.json
     title = data['title']
     description = data['description']
+    
     catagories = data['catagories']
     tech_stack = data['tech_stack']
 
