@@ -1,17 +1,19 @@
 from flask import Flask, request
 import mysql.connector
 app = Flask(__name__)
+if __name__ == '__main__':
+    app.run()
 
 
 db = mysql.connector.connect(
-    host="local_host",
+    host="localhost",
     user="root",
     password="your_password",
     database="projects"
 )
 
 @app.route('/api/create_project', methods=['POST'])
-def handle_user_data():
+def create_project():
     data = request.json
     title = data['title']
     description = data['description']
@@ -31,7 +33,7 @@ def handle_user_data():
     return {'status': 'success'}
 
 @app.route('/api/create_user', methods=['POST'])
-def handle_user_data():
+def create_user():
     data = request.json
     username = data['username']
     email = data['email']
