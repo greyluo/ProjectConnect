@@ -3,6 +3,7 @@
 
 ProjectConnect is a web-based platform designed to connect students with academic, research, or extracurricular projects that align with their interests, skills, and goals. The platform helps students discover and join their preferred projects led by other students, faculty members, or external organizations. 
 
+
 ## Some key features of ProjectConnect include:
 
 1. Interest-based project matching: Students create a profile outlining their interests, skills, and academic background. The platform uses an AI-driven algorithm to recommend projects that align with their preferences.
