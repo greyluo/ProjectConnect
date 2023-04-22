@@ -41,8 +41,8 @@ function Search(){
   const handleSelectChangeEnvironment = (selectedOptions) => {
     setSelectedEnvironments(selectedOptions);
   };
-  const handleSelectChangeLanguage = (selectedOptions) => {
-    setSelectedLanguages(selectedOptions);
+  const handleSelectChangePlatform = (selectedOptions) => {
+    setSelectedPlatforms(selectedOptions);
   };
 
   const handleSelectChangeFramework = (selectedOptions) => {
@@ -51,6 +51,14 @@ function Search(){
 
   const languageOptions = programmingLanguages.map(language => {
     return { value: language.name, label: language.name }
+  });
+
+  const environmentOptions = databaseEnvironments.map(environment => {
+    return { value: environment.name, label: environment.name }
+  });
+
+  const platformOptions =  cloudPlatforms.map(platform => {
+    return { value: platform.name, label: platform.name }
   });
 
   const frameworkOptions = webFrameworks.map(framework => {
@@ -68,6 +76,24 @@ function Search(){
         isMulti={true}
       />
 
+      <h2>Database Environments</h2>
+      <Select
+        //total options
+        options={environmentOptions}
+        value={selectedEnvironments}
+        onChange={handleSelectChangeEnvironment}
+        isMulti={true}
+      />
+
+      <h2>Cloud Platforms</h2>
+      <Select
+        //total options
+        options={platformOptions}
+        value={selectedPlatforms}
+        onChange={handleSelectChangePlatform}
+        isMulti={true}
+      />
+
       <h2>Web Frameworks</h2>
       <Select
         options={frameworkOptions}
@@ -80,6 +106,14 @@ function Search(){
         <h2>Selected Options for language:</h2>
         <ul>
           {selectedLanguages.map(language => <li key={language.value}>{language.label}</li>)}
+        </ul>
+        <h2>Selected Options for environment:</h2>
+        <ul>
+          {selectedEnvironments.map(environment => <li key={environment.value}>{environment.label}</li>)}
+        </ul>
+        <h2>Selected Options for platform:</h2>
+        <ul>
+          {selectedPlatforms.map(platform => <li key={platform.value}>{platform.label}</li>)}
         </ul>
         <h2>Selected Options for framework:</h2>
         <ul>
