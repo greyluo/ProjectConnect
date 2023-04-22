@@ -30,7 +30,7 @@ function App() {
         <Routes>
           <Route exact path="/" element={<Home/>} />
           <Route
-            path="/project-page" element={<ProjectPage stypes={projectTypes} />} />
+            path="/project-page" element={<ProjectPage types={projectTypes} />} />
         </Routes>
     </Router>
     </div>
