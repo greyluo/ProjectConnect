@@ -19,7 +19,7 @@ function App() {
       .catch(error => console.error(error));
   }, []);
   useEffect(() => {
-    fetch('/frontend/src/data/data.json')
+    fetch('/frontend/src/data/ProjectTypes.json')
       .then(response => response.json())
       .then(data => setProjectTypes(data))
       .catch(error => console.error(error));

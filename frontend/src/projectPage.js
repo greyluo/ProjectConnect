@@ -20,7 +20,7 @@ function ProjectPage(types)
                 <label htmlFor='projectType'>Project Type</label>
                 <select id='projectType' name='projectType'>
                     <option value=''>Select</option>
-                    {types.map((type) => (
+                    {types && types.map((type) => (
                     <option key={type} value={type}>{type}</option>
                     ))}
                 </select>
