@@ -1,6 +1,5 @@
 # ProjectConnect
-LA-Hacks-23
-
+## LA-Hacks-23
 ## Project Idea: "ProjectConnect" Track: Home Room
 
 ProjectConnect is a web-based platform designed to connect students with academic, research, or extracurricular projects that align with their interests, skills, and goals. The platform helps students discover and join projects led by other students, faculty members, or external organizations. Some key features of ProjectConnect include:
