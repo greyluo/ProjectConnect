@@ -23,12 +23,12 @@ function App() {
       .then(data => setProjectTypes(data))
       .catch(error => console.error(error));
   }, []);
-  return (
+  return(
       <Router>
           <Routes>
             <Route exact path="/" element={<Home />} />
             <Route path="/project-page" element={<ProjectPage types={projectTypes} />} />
-            <Route path="/*" element={<NotFound />} />
+            {/* <Route path="/*" element={<NotFound />} /> */}
           </Routes>
       </Router>
   );
