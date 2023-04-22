@@ -1,5 +1,9 @@
 import logo from './logo.svg';
 import './App.css';
+import Profile from './Profile';
+import { useState, useEffect } from 'react';
+import Project from './projectPage';
+import ProjectList from './ProjectList';
 
 import { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
