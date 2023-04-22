@@ -21,6 +21,7 @@ function ProjectPage(types)
                 <label htmlFor='projectType'>Project Type</label>
                 <select id='projectType' name='projectType'>
                     <option value=''>Select</option>
+                    {/* {types &&  Object.keys(types).map((type) => ( */}
                     {types && types.map((type) => (
                     <option key={type} value={type}>{type}</option>
                     ))}
@@ -30,10 +31,10 @@ function ProjectPage(types)
                 <input type='text' id='projectStatus' name='projectStatus' />
 
                 <label htmlFor='projectStartDate'>Project Start Date</label>
-                <input type='text' id='projectStartDate' name='projectStartDate' />
+                <input type='date' id='projectStartDate' name='projectStartDate' />
 
                 <label htmlFor='projectEndDate'>Project Expected End Date</label>
-                <input type='text' id='projectEndDate' name='projectEndDate' />
+                <input type='date' id='projectEndDate' name='projectEndDate' />
 
                 <input type="hidden" name="status" value={status} />
 
