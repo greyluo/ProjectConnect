@@ -1,6 +1,7 @@
 import React from 'react';
 import { useState } from 'react';
-function Project(types)
+import withAuth from './withAuth';
+function ProjectPage(types)
 {
     const [status, setStatus] = useState('open');
     function closePost() {
@@ -39,10 +40,10 @@ function Project(types)
                 {/* if status is closed, then disable the submit button */}
                 {/* if not filled out, then disable the submit button */}
                 <button type="submit" disabled={status === 'closed'}>Submit</button>
-</form>
+        </form>
         </div>
     );
 
 }
 
-export default Project;
+export default withAuth(ProjectPage);
