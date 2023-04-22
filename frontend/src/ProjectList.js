@@ -1,11 +1,7 @@
-import React from "react";
+
 import { useState, useEffect } from "react";
 import ProjectItem from "./ProjectItem";
-
 import React from 'react';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import home from './components/home';
-import projectPage from './components/projectPage';
 function ProjectList(props) {
     const projects = props.projects;
     return (
