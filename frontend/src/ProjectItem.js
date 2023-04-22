@@ -1,8 +1,9 @@
 import React from "react";
 import { useState, useEffect } from "react";
 
-function ProjectItem(project) {
+function ProjectItem(props) {
     const [projectPreview, setPreview] = useState('');
+    const project = props.project;
 
   function truncateDescription(description) {
     const words = project.projectDescription.split(' ');

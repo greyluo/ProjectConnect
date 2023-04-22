@@ -10,7 +10,7 @@ import ProjectList from './ProjectList';
 function App() {
   const [projects, setProjects] = useState(null);
   const [projectTypes, setProjectTypes] = useState(null);
-
+  
   useEffect(() => {
     fetch('/api/projects')
       .then(response => response.json())
@@ -29,7 +29,6 @@ function App() {
   return (
     <div className="App">
         <Profile></Profile>
-        // onclick goes to a new project page
         <button type="button" >New Project</button>
         <ProjectList projects={projects} types = {projectTypes}></ProjectList>
     </div>
