@@ -16,16 +16,9 @@ const Pic = () => {
 
   return (
     isAuthenticated ? (
-      <div>
        <Link to="/profile">
             <img src={user.picture} alt={user.name} style={{ display: 'inline' }} />
         </Link>
-
-<Routes>
-                      <Route path="/Profile" element={<Profile />} />
-          </Routes>      </div>
-
-
     ) : (
         <div>
             <LoginButton></LoginButton>
