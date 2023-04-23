@@ -1,13 +1,13 @@
 import React from "react";
 import { useState, useEffect } from "react";
-import Link from "react-dom"
+import Link from 'react-dom'
 
 function ProjectItem(props) {
     const [projectPreview, setPreview] = useState('');
     const project = props.project;
-
+    console.log(project)
   function truncateDescription(description) {
-    const words = project.projectDescription.split(' ');
+    const words = description.split(' ');
     if (words.length > 10) {
       return words.slice(0, 10).join(' ') + '...';
     }
@@ -15,18 +15,17 @@ function ProjectItem(props) {
   }
 
   useEffect(() => {
-    const truncated = truncateDescription(project.projectDescription);
+    const truncated = truncateDescription(project.project_description);
     setPreview(truncated);
-  }, [project.projectDescription]);
+  }, [project.project_description]);
 
-    return (
+  return (
         <div className="project-item">
-        <h2>{project.name}</h2>
-        <p>{projectPreview}</p>
-        <p>{project.dueDate}</p>
-        <p>{project.status}</p>
-        
-        <Link to='/project-detail-${id}'></Link>
+        <h2>{project.project_name}</h2>
+        {/* <p>{projectPreview}</p> */}
+        <p>{project.project_end_date}</p>
+        <p>{project.project_type}</p>
+        {/* <Link to="/project?id=${project.id}"></Link> */}
         </div>
     );
 }
