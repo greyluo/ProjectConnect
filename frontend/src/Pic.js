@@ -16,9 +16,16 @@ const Pic = () => {
 
   return (
     isAuthenticated ? (
-       <Link to="/profile">
-            <img src={user.picture} alt={user.name} style={{ display: 'inline' }} />
-        </Link>
+      //  <Link to="/profile">
+      //       <img src={user.picture} alt={user.name} style={{ display: 'inline' }} />
+      //   </Link>
+//       <h3>
+//        <Link to="/profile">{user.name}</Link>
+//       </h3>
+      <Link to="/profile" style={{ display: 'inline-block' }}>
+        <img src={user.picture} alt={user.name} style={{ display: 'inline-block' }} />
+        <span style={{ display: 'inline-block', marginLeft: '10px' }}>{user.name}</span>
+      </Link>
     ) : (
         <div>
             <LoginButton></LoginButton>

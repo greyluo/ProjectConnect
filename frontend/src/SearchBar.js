@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import './SearchBar.css'; // import custom CSS styles
+import './css/SearchBar.css'; // import custom CSS styles
 
 function SearchBar(props) {
   const [searchTerm, setSearchTerm] = useState("");

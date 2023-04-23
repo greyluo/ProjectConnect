@@ -1,0 +1,29 @@
+.loading-container {
+    display: flex;
+    align-items: center;
+  }
+
+  .loading-icon {
+    font-size: 2rem;
+    margin-right: 1rem;
+  }
+
+  .loading-dots::after {
+    content: "";
+    animation: loading 1s infinite;
+  }
+
+  @keyframes loading {
+    0% {
+      content: "";
+    }
+    25% {
+      content: ".";
+    }
+    50% {
+      content: "..";
+    }
+    75% {
+      content: "...";
+    }
+  }

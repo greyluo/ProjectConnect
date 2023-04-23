@@ -1,4 +1,4 @@
-  import './App.css';
+  import './css/App.css';
   import Profile from './Profile';
   import { useState, useEffect } from 'react';
   import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';

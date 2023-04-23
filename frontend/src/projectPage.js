@@ -74,8 +74,6 @@ function ProjectPage(props){
 
                 <input type="hidden" name="status" />
 
-                <label htmlFor='projectMilestone'>Project Milestone</label>
-                <input type='text' id='projectMilestone' name='projectMilestone' />
 
                 <label htmlFor='githubLink'>Github Link:</label>
                 <input type='url' id='githubLink' name='githubLink' />
