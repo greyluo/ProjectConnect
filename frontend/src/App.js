@@ -13,7 +13,13 @@
 function App() {
   const [projects, setProjects] = useState(null);
 
-  console.log(projectTypes)
+  useEffect(() => {
+    fetch('http://projectconnect.tech/api/get_projects')
+      .then(response => response.json())
+      .then(data => setProjects(data))
+      .catch(error => console.error(error));
+  }, []);
+
   return(
     <div className = "App">
           <Routes>
