@@ -1,4 +1,5 @@
   import './css/App.css';
+  import React from 'react';
   import Profile from './Profile';
   import { useState, useEffect } from 'react';
   import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
@@ -6,8 +7,7 @@
   import ProjectPage from './projectPage';
   import projectTypes from './data/ProjectTypes.json';
   // import NotFound from './NotFound';
-  import Pic from './pic';
-  import React from 'react';
+  // import Pic from './pic';
 
 
 function App() {
