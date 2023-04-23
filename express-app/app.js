@@ -1,37 +1,25 @@
 const express = require('express');
 const mysql = require('mysql2');
 const fs = require('fs');
+const multer = require('multer');
 const bodyParser = require('body-parser');
-const fetch = require("node-fetch");
+const fetch = (...args) => import("node-fetch").then(({ default: fetch }) => fetch(...args));
 const OPENAI_API_KEY = "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"; // Replace with your API key
 const API_URL = "https://api.openai.com/v1/engines/davinci-codex/completions";
 const app = express();
 const port = process.env.PORT || 3000;
+/* app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true })); */
+const upload = multer();
 
-async function generateRelatedTags(inputTags, description) {
-  const tagsString = inputTags.join(", ");
-  const prompt = `Among tags: ${tagsString}, Generate related tags based on the following project ${description} `;
+const { Configuration, OpenAIApi } = require("openai");
 
-  const response = await fetch(API_URL, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-      "Authorization": `Bearer ${OPENAI_API_KEY}`,
-    },
-    body: JSON.stringify({
-      prompt: prompt,
-      max_tokens: 50,
-      n: 1,
-      stop: null,
-      temperature: 0.7,
-    }),
-  });
+const configuration = new Configuration({
+  apiKey: "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",
+});
+const openai = new OpenAIApi(configuration);
 
-  const data = await response.json();
-  const relatedTagsText = data.choices[0].text.trim();
-  const relatedTags = relatedTagsText.split(",").map(tag => tag.trim());
-  return relatedTags;
-}
+
 
 
 function readJSONFile(filePath) {
@@ -42,15 +30,15 @@ function readJSONFile(filePath) {
 
 // get data from tech_stack.json
 const jsonFilePath = 'tech-stack.json';
-const data = readJSONFile(jsonFilePath);
+const data = Array.from(readJSONFile(jsonFilePath));
 const inputTags = []
-data.for_each((category) => {
-  category.for_each((tag) => {
+data.forEach((category) => {
+  category.forEach((tag) => {
     inputTags.append(tag["name"])
   })
 })
 
-app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 const pool = mysql.createPool({
@@ -63,19 +51,30 @@ const pool = mysql.createPool({
   queueLimit: 0
 });
 
-app.post('/api/create_project', (req, res) => {
-  const { title, description, category, tech_stack } = req.body;
+app.post('/api/create_project',upload.none(), async (req, res) => {
+  const { title, description, category} = req.body;
+  console.log(req.body)
 
-  if (!title || !description || !categories || !tech_stack) {
+  if (!title || !description || !category) {
     return res.json({ status: 'error', message: 'Please fill out all fields' });
   }
-  const relatedTags = generateRelatedTags(inputTags,description)
-
-  const insertQuery = "INSERT INTO projects (title, description, category,tags, state) VALUES (?, ?, ?, ?, ?, 1)";
-  pool.query(insertQuery, [title, description, category, tech_stack, relatedTags ], (err, result) => {
+  const insertQuery = "INSERT INTO projects (title, description, category, tags, state) VALUES (?, ?, ?, ?, 1)";
+  const completion = await openai.createCompletion({
+    model: "text-davinci-003",
+    prompt: "Among tags from ${inputTags}, generate the most related tags based on the project: ${description}",
+    max_tokens: "50"
+  });
+  related_tages = completion.data.choices[0].text
+  pool.query(insertQuery, [title, description, category,relatedTags], (err, result) => {
     if (err) throw err;
     res.json({ status: 'success' });
-  });
+
+
+    }
+
+  )
+
+
 });
 
 app.post('/api/create_user', (req, res) => {
