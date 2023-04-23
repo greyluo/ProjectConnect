@@ -1,0 +1,256 @@
+
+label[for="projectName"] {
+    position: absolute;
+    left: 13%;
+    display: inline-block;
+    width: 150px;
+    text-align: right;
+  }
+
+  input[id="projectName"]{
+    position: absolute;
+    left: 28%;
+    display: inline-block;
+    width: 200px;
+  }
+
+/* .button {
+    class : "btn btn-success";
+} */
+
+
+label[for="projectDescription"] {
+    position: absolute;
+    left: 13%;
+    display: inline-block;
+    width: 150px;
+    text-align: right;
+  }
+
+textarea[name="projectDescription"]{
+    position: absolute;
+    left: 28%;
+
+}
+
+
+
+.form-group {
+    display: flex;
+    align-items: center;
+    margin-top: 230px;
+    margin-bottom: 10px; /* adds some space between the form groups */
+
+  }
+
+  .form-group label {
+    width: 120px; /* adjust this to your liking */
+    margin-right: 10px; /* adds some space between the label and select */
+    position: absolute;
+    left: 16%;
+  }
+
+  .form-group select {
+    position: absolute;
+    left: 28%;
+    width: 200px;
+
+  }
+
+  label[for="projectStatus"] {
+    position: absolute;
+    left: 13%;
+    display: inline-block;
+    width: 150px;
+    text-align: right;
+    margin-top: 10px;
+  }
+
+  input[id="projectStatus"]{
+    position: absolute;
+    left: 28%;
+    display: inline-block;
+    width: 200px;
+    margin-top: 10px;
+    /* margin-bottom: 0px; */
+  }
+
+  .starttime {
+    position: relative;
+    /* left: 15%; */
+    /* classes: "col-md-1"; */
+    transform: translateX(-130px);
+    display: inline-block;
+    /* align-items: baseline; */
+    margin-top: 50px;
+    margin-bottom: 20px; /* adds some space between the form groups */
+    /* margin-left: 5%; */
+    /* left:10px; */
+    /* margin-left: 5%; */
+    right: 20px;
+
+}
+.mystartdate {
+    position: absolute;
+    left: -170px;
+
+}
+
+.endtime {
+    /* position: absolute; */
+    /* left: 15%; */
+    /* classes: "col-md-4 m1-auto"; */
+    transform: translateX(-20px);
+    display: inline-block;
+    /* align-items: baseline; */
+    margin-top: 50px;
+    margin-bottom: 20px; /* adds some space between the form groups */
+    /* margin-right: 5%; */
+    margin-left: 5%;
+
+    /* right: 10px; */
+
+}
+
+.myenddate {
+    position: absolute;
+    left: -150px;
+
+}
+
+label[for="projectMilestone"] {
+    position: absolute;
+    left: 13%;
+    display: inline-block;
+    width: 150px;
+    text-align: right;
+    margin-top: 10px;
+    margin-bottom: 20px;
+  }
+
+input[name="projectMilestone"]{
+    position: absolute;
+    left: 28%;
+    display: inline-block;
+    width: 200px;
+    margin-bottom: 20px;
+    margin-top: 10px;
+}
+
+label[for="githubLink"] {
+    position: absolute;
+    left: 13%;
+    display: inline-block;
+    width: 150px;
+    text-align: right;
+    margin-bottom: 20px;
+    margin-top: 25px;
+  }
+
+input[id="githubLink"]{
+    position: absolute;
+    left: 28%;
+    display: inline-block;
+    width: 200px;
+    margin-bottom: 20px;
+    margin-top: 25px;
+
+}
+
+.tasks {
+    position:absolute;
+    top:20%;
+    right: 20%;
+    transform: translateX(5px);
+}
+
+label[for="checkbox"]{
+    transform: translateX(-15px);
+}
+
+  /* animation */
+  @import url('https://fonts.googleapis.com/css?family=Source+Code+Pro:200');
+
+body  {
+    background-image: url('https://images.pexels.com/photos/531972/pexels-photo-531972.jpeg');
+  background-size:cover;
+        -webkit-animation: slidein 30s;
+        animation: slidein 30s;
+
+        -webkit-animation-fill-mode: forwards;
+        animation-fill-mode: forwards;
+
+        -webkit-animation-iteration-count: infinite;
+        animation-iteration-count: infinite;
+
+        -webkit-animation-direction: alternate;
+        animation-direction: alternate;
+}
+
+@-webkit-keyframes slidein {
+from {background-position: top; background-size:3000px; }
+to {background-position: -100px 0px;background-size:2750px;}
+}
+
+@keyframes slidein {
+from {background-position: top;background-size:3000px; }
+to {background-position: -100px 0px;background-size:2750px;}
+
+}
+
+
+
+.center
+{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: auto;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  /* background: rgba(75, 75, 250, 0.3); */
+  border-radius: 2px;
+}
+
+
+.cool-button {
+    position: relative;
+    padding: 16px 32px;
+    font-size: 20px;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: #fff;
+    background-color: #333;
+    border: none;
+    border-radius: 50px;
+    overflow: hidden;
+  }
+
+  .cool-button:hover:before {
+    animation: wave 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+  }
+
+  .cool-button:before {
+    content: "";
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    background: #fff;
+    border-radius: 50%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0);
+  }
+
+  @keyframes wave {
+    0% {
+      transform: translate(-50%, -50%) scale(0);
+      opacity: 1;
+    }
+    100% {
+      transform: translate(-50%, -50%) scale(1);
+      opacity: 0;
+    }
+  }

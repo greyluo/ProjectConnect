@@ -1,5 +1,6 @@
 import React from "react";
 import { useState, useEffect } from "react";
+import Link from "react-dom"
 
 function ProjectItem(props) {
     const [projectPreview, setPreview] = useState('');
@@ -24,6 +25,7 @@ function ProjectItem(props) {
         <p>{projectPreview}</p>
         <p>{project.dueDate}</p>
         <p>{project.status}</p>
+        <Link to='/project-detail-${id}'></Link>
         </div>
     );
 }
