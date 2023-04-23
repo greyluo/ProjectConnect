@@ -1,9 +1,7 @@
 const express = require('express');
-const mysql = require('mysql2');
 const fs = require('fs');
 const multer = require('multer');
 const bodyParser = require('body-parser');
-const fetch = (...args) => import("node-fetch").then(({ default: fetch }) => fetch(...args));
 const OPENAI_API_KEY = "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"; // Replace with your API key
 const API_URL = "https://api.openai.com/v1/engines/davinci-codex/completions";
 const app = express();
@@ -13,11 +11,13 @@ app.use(bodyParser.urlencoded({ extended: true })); */
 const upload = multer();
 
 const { Configuration, OpenAIApi } = require("openai");
-
+/*
 const configuration = new Configuration({
-  apiKey: "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",
+  organization:"org-aBFJMDpur3IqSGcurTNrkC31",
+  apiKey:'sk-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',
 });
 const openai = new OpenAIApi(configuration);
+ */
 
 
 
@@ -40,16 +40,15 @@ data.forEach((category) => {
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
-
-const pool = mysql.createPool({
+const mysql = require('mysql')
+const connection = mysql.createConnection({
   host: 'localhost',
   user: 'root',
-  password: 'your_password',
-  database: 'projects',
-  waitForConnections: true,
-  connectionLimit: 10,
-  queueLimit: 0
-});
+  password : '',
+  database: 'projects'
+})
+
+connection.connect()
 
 app.post('/api/create_project',upload.none(), async (req, res) => {
   const { title, description, category} = req.body;
@@ -58,21 +57,20 @@ app.post('/api/create_project',upload.none(), async (req, res) => {
   if (!title || !description || !category) {
     return res.json({ status: 'error', message: 'Please fill out all fields' });
   }
-  const insertQuery = "INSERT INTO projects (title, description, category, tags, state) VALUES (?, ?, ?, ?, 1)";
-  const completion = await openai.createCompletion({
+  const insertQuery = "INSERT INTO projects (title, description, category, state) VALUES (?, ?, ?, ?, 1)";
+  /* const completion = await openai.createCompletion({
     model: "text-davinci-003",
     prompt: "Among tags from ${inputTags}, generate the most related tags based on the project: ${description}",
     max_tokens: "50"
-  });
-  related_tages = completion.data.choices[0].text
-  pool.query(insertQuery, [title, description, category,relatedTags], (err, result) => {
+  }); */
+  /* related_tages = completion.data.choices[0].text */
+    connection.query(insertQuery, [req.body.title, req.body.description, req.body.category], (err, result) => {
     if (err) throw err;
     res.json({ status: 'success' });
-
-
     }
 
   )
+  connection.end()
 
 
 });
