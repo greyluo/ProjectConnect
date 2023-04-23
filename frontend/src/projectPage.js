@@ -26,7 +26,7 @@ function ProjectPage(props){
         }
         }));
     }
-    function handleSubmit(event) {
+    const handleSubmit = async (event)=> {
         event.preventDefault();
         const requiredFields = event.target.querySelectorAll('[required]');
         let valid = true;
@@ -39,7 +39,39 @@ function ProjectPage(props){
         }
         });
         if (valid) {
-        // Submit form data
+            const formData = new FormData(event.target);
+            const tasks = formData.getAll('task[]').map((task, index) => ({ id: index + 1, name: task }));
+            const data = {
+                projectName: formData.get('projectName'),
+                projectDescription: formData.get('description for your project'),
+                projectType: formData.get('projectType'),
+                projectStatus: formData.get('projectStatus'),
+                projectStartDate: formData.get('projectStartDate'),
+                projectEndDate: formData.get('projectEndDate'),
+                projectMilestone: formData.get('projectMilestone'),
+                githubLink: formData.get('githubLink'),
+                tasks,
+                closePost: formData.get('checkbox') === 'true'
+  };
+
+            try {
+                const response = await fetch('/api/create_project', {
+                  method: 'POST',
+                  headers: {
+                    'Content-Type': 'application/json'
+                  },
+                  body: JSON.stringify(data)
+                });
+
+                if (response.ok) {
+                  const result = await response.json();
+                  console.log('Form submitted successfully:', result);
+                } else {
+                  console.error('Error submitting form:', response.statusText);
+                }
+              } catch (error) {
+                console.error('Error submitting form:', error);
+              }
         } else {
         alert('Please fill out all required fields.');
         }
