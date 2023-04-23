@@ -1,26 +1,60 @@
 import React from 'react';
 import { useState } from 'react';
 import withAuth from './withAuth';
-function ProjectPage(props)
 
-{
+
+
+function ProjectPage(props){
+    const [tasks, setTasks] = useState([{ id: 1, name: '',description:'', deadline:'', hours:''}]);
     const types = props.types;
-    console.log(types)
-    const [status, setStatus] = useState('open');
-    function closePost() {
-        setStatus('closed');
+
+    function addTask() {
+        const newTask = { id: tasks.length + 1};
+        setTasks([...tasks, newTask]);
     }
 
-    return (
+    function deleteTask(id) {
+        setTasks(tasks.filter(task => task.id !== id));
+    }
 
+    function handleChange(id, name, hours, deadline, description) {
+        setTasks(tasks.map(task => {
+        if (task.id === id) {
+            return { ...task, name, hours, deadline, description };
+        } else {
+            return task;
+        }
+        }));
+    }
+    function handleSubmit(event) {
+        event.preventDefault();
+        const requiredFields = event.target.querySelectorAll('[required]');
+        let valid = true;
+        requiredFields.forEach(field => {
+        if (!field.value.trim()) {
+            valid = false;
+            field.classList.add('error');
+        } else {
+            field.classList.remove('error');
+        }
+        });
+        if (valid) {
+        // Submit form data
+        } else {
+        alert('Please fill out all required fields.');
+        }
+    }
+    return (
         <div>
             <h1>Project</h1>
-            <form className='project' action='/api/update-project' method='POST'>
+            <form className='project' onSubmit={handleSubmit}>
                 <label htmlFor='projectName'>Project Name</label>
                 <input type='text' id='projectName' name='projectName' />
 
                 <label htmlFor='projectDescription'>Project Description</label>
-                <input type='text' id='projectDescription' name='projectDescription' />
+                <textarea name="description for your project" rows="5" colomns = "50" required></textarea>
+                {/* <input type='text' id='projectDescription' name='projectDescription' /> */}
+
                 <label htmlFor='projectType'>Project Type</label>
                 <select id='projectType' name='projectType'>
                     <option value=''>Select</option>
@@ -30,25 +64,41 @@ function ProjectPage(props)
                 </select>
 
                 <label htmlFor='projectStatus'>Project Status</label>
-                <input type='text' id='projectStatus' name='projectStatus' />
-
+                <input type="range" id="projectStatus" name="projectStatus" min="1" max="5" step="1">
+                </input>
                 <label htmlFor='projectStartDate'>Project Start Date</label>
                 <input type='date' id='projectStartDate' name='projectStartDate' />
 
                 <label htmlFor='projectEndDate'>Project Expected End Date</label>
                 <input type='date' id='projectEndDate' name='projectEndDate' />
 
-                <input type="hidden" name="status" value={status} />
+                <input type="hidden" name="status" />
 
-                <button type="button" onClick={closePost}>Close Project</button>
-                {/* if status is closed, then disable the submit button */}
-                {/* if not filled out, then disable the submit button */}
-                <button type="submit" disabled={status === 'closed'}>Submit</button>
+                <label htmlFor='projectMilestone'>Project Milestone</label>
+                <input type='text' id='projectMilestone' name='projectMilestone' />
+
+                <label htmlFor='githubLink'>Github Link:</label>
+                <input type='text' id='githubLink' name='githubLink' />
+                <fieldset>
+                    <legend>Task List</legend>
+                        {tasks.map(task => (
+                            <div key={task.id} className="task">
+                                <label htmlFor={`task-${task.id}`}>Task:</label>
+                                <input type="text" id={`task-${task.id}`} name="task[]" required value={task.name} onChange={event => handleChange(task.id, event.target.value)} />
+                                <button type="button" onClick={() => deleteTask(task.id)}>Delete</button>
+                            </div>
+                        ))}
+                    <button type="button" onClick={addTask}>+ Add Task</button>
+                </fieldset>
+                <label for="checkbox">close post</label>
+                <input type="checkbox" id="checkbox" name="checkbox" value="true">
+                </input>
+                <button type="submit">Submit</button>
             </form>
         </div>
     );
 
+
 }
 
-/* export default withAuth(ProjectPage); */
-export default ProjectPage;
+export default withAuth(ProjectPage);

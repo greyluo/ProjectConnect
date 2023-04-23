@@ -1,4 +1,3 @@
-
   import './App.css';
   import Profile from './Profile';
   import { useState, useEffect } from 'react';
@@ -7,6 +6,7 @@
   import ProjectPage from './projectPage';
   import projectTypes from './data/ProjectTypes.json';
   // import NotFound from './NotFound';
+  import React from 'react';
 
 
 function App() {
@@ -21,7 +21,6 @@ function App() {
   console.log(projectTypes)
   return(
     <div className = "App">
-
           <Routes>
             <Route exact path="/" element={<Home />} />
             <Route path="/project-page" element={<ProjectPage types={projectTypes} />} />

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-function Searchbar(props) {
+function SearchBar(props) {
     const [searchTerm, setSearchTerm] = useState("");
 
     const handleSearch = (event) => {
@@ -15,4 +15,5 @@ function Searchbar(props) {
         </form>
     );
 }
-export default Searchbar();
+
+export default SearchBar();

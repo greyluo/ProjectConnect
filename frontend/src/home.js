@@ -8,6 +8,7 @@ import Profile from './Profile';
 import data from './data/ProjectTypes.json';
 import Select from 'react-select';
 import ReactDOM from 'react-dom/client';
+import Navigation from './navigation';
 
 
 function Home(props) {
@@ -15,6 +16,8 @@ function Home(props) {
   const [projectTypes, setProjectTypes] = useState(null);
   return (
     <div className="home">
+      <Navigation></Navigation>
+
       <Profile></Profile>
       <Link to="/project-page">
         <button  >New Project</button>
