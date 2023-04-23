@@ -25,6 +25,7 @@ function ProjectItem(props) {
         <p>{projectPreview}</p>
         <p>{project.dueDate}</p>
         <p>{project.status}</p>
+        
         <Link to='/project-detail-${id}'></Link>
         </div>
     );

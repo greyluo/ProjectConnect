@@ -6,7 +6,7 @@
   import ProjectPage from './projectPage';
   import projectTypes from './data/ProjectTypes.json';
   // import NotFound from './NotFound';
-  import Pic from './Pic';
+  import Pic from './pic';
   import React from 'react';
 
 
