@@ -13,12 +13,6 @@
 function App() {
   const [projects, setProjects] = useState(null);
 
-  useEffect(() => {
-    fetch('/api/get_projects')
-      .then(response => response.json())
-      .then(data => setProjects(data))
-      .catch(error => console.error(error));
-  }, []);
   console.log(projectTypes)
   return(
     <div className = "App">

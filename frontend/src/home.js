@@ -11,9 +11,18 @@ import Navigation from './navigation';
 import { BrowserRouter, Route,Routes, Switch } from 'react-router-dom';
 
 
+
 function Home(props) {
   const [projects, setProjects] = useState(null);
   const [projectTypes, setProjectTypes] = useState(null);
+
+  useEffect(() => {
+    fetch('http://projectconnect.tech/api/get_projects')
+      .then(response => response.json())
+      .then(data => setProjects(data))
+      .catch(error => console.error(error));
+  }, []);
+
   return (
     <div className="home">
       <Navigation></Navigation>
