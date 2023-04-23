@@ -116,7 +116,7 @@ app.get('/api/get_users', (req, res) => {
     app.get('/api/get_projects', (req, res) => {
         const query = 'SELECT * FROM projects';
 
-        db.query(query, (err, results) => {
+        project_db.query(query, (err, results) => {
           if (err) {
             console.error(err);
             res.status(500).send('Error fetching projects');
