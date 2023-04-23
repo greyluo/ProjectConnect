@@ -4,10 +4,23 @@ import mysql from 'mysql2';
 import multer from 'multer';
 import fs from 'fs';
 import dotenv from 'dotenv'
+import https from 'https'
+
+const privateKey = fs.readFileSync('/etc/letsencrypt/live/projectconnect.tech/privkey.pem', 'utf8');
+const certificate = fs.readFileSync('/etc/letsencrypt/live/projectconnect.tech/cert.pem', 'utf8');
+const ca = fs.readFileSync('/etc/letsencrypt/live/projectconnect.tech/chain.pem', 'utf8');
+
+const credentials = {
+  key: privateKey,
+  cert: certificate,
+  ca: ca,
+};
+
 dotenv.config()
 import { Configuration, OpenAIApi} from 'openai';
 const upload = multer();
 const app = express();
+const httpsServer = https.createServer(credentials, app);
 import jsonData from './tech-stack.json' assert {type: 'json'};
 
 app.use(bodyParser.json());
@@ -28,7 +41,7 @@ const project_db = mysql.createPool({
     password: '',
     database:'projects'
 })
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 3001;
 app.get('/api/get_users', (req, res) => {
     user_db.query('SELECT * FROM users', (err, results) => {
       if (err) {
