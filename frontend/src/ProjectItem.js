@@ -1,7 +1,6 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import Link from 'react-dom'
-import Link from "react-dom"
 
 function ProjectItem(props) {
     const [projectPreview, setPreview] = useState('');
@@ -20,14 +19,13 @@ function ProjectItem(props) {
     setPreview(truncated);
   }, [project.project_description]);
 
-    return (
+  return (
         <div className="project-item">
         <h2>{project.project_name}</h2>
         {/* <p>{projectPreview}</p> */}
         <p>{project.project_end_date}</p>
         <p>{project.project_type}</p>
-        <Link to="/project?id=${project.id}"><Link/>
-
+        {/* <Link to="/project?id=${project.id}"></Link> */}
         </div>
     );
 }
