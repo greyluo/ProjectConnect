@@ -4,11 +4,11 @@ import Project from './projectPage';
 import ProjectList from './ProjectList';
 import { Link } from 'react-router-dom';
 import Profile from './Profile';
-
 import data from './data/ProjectTypes.json';
 import Select from 'react-select';
 import ReactDOM from 'react-dom/client';
 import Navigation from './navigation';
+import { BrowserRouter, Route,Routes, Switch } from 'react-router-dom';
 
 
 function Home(props) {

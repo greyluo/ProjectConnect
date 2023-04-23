@@ -52,7 +52,7 @@ function ProjectPage(props){
                 <input type='text' id='projectName' name='projectName' />
 
                 <label htmlFor='projectDescription'>Project Description</label>
-                <textarea name="description for your project" rows="5" colomns = "50" required></textarea>
+                <textarea name="description for your project" rows="2" cols="1" required></textarea>
                 {/* <input type='text' id='projectDescription' name='projectDescription' /> */}
 
                 <label htmlFor='projectType'>Project Type</label>
@@ -78,7 +78,7 @@ function ProjectPage(props){
                 <input type='text' id='projectMilestone' name='projectMilestone' />
 
                 <label htmlFor='githubLink'>Github Link:</label>
-                <input type='text' id='githubLink' name='githubLink' />
+                <input type='url' id='githubLink' name='githubLink' />
                 <fieldset>
                     <legend>Task List</legend>
                         {tasks.map(task => (

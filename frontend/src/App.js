@@ -6,6 +6,7 @@
   import ProjectPage from './projectPage';
   import projectTypes from './data/ProjectTypes.json';
   // import NotFound from './NotFound';
+  import Pic from './Pic';
   import React from 'react';
 
 
@@ -22,11 +23,11 @@ function App() {
   return(
     <div className = "App">
           <Routes>
-            <Route exact path="/" element={<Home />} />
-            <Route path="/project-page" element={<ProjectPage types={projectTypes} />} />
+            <Route exact path ="/" element={<Home />} />
+            <Route path ="/project-page" element={<ProjectPage types={projectTypes} />} />
+            <Route path ="/profile" element ={<Profile />} />
             {/* <Route path="/*" element={<NotFound />} /> */}
           </Routes>
-
     </div>
   );
 }

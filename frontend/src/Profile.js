@@ -1,10 +1,13 @@
+
 import React, { useState } from "react";
 import { useAuth0 } from "@auth0/auth0-react";
 import LoginButton from "./LoginButton";
 import LogoutButton from "./logoutButton";
+import'./Profile.css';  //import custom css style
 
 const Profile = () => {
   const { user, isAuthenticated, isLoading } = useAuth0();
+
 
 
   //for biography
@@ -21,12 +24,12 @@ const Profile = () => {
   }
 
   return (
-    isAuthenticated ? (
-      <div>
-
+    <div className="profile">
+    {/* {isAuthenticated ? ( */}
+      <div className = "user">
         <img src={user.picture} alt={user.name} />
-        <h2>{user.name}</h2>
-        <h2>{user.email}</h2>
+        <h3>{user.name}</h3>
+        <h3>{user.email}</h3>
         <LogoutButton></LogoutButton>
         <div className = "bio">
           <h2>Biography:</h2>
@@ -34,13 +37,15 @@ const Profile = () => {
         </div>
 
       </div>
-
+{/*
     ) : (
         <div>
             <LoginButton></LoginButton>
         </div>
-    )
+    )} */}
+    </div>
   );
 };
 
 export default Profile;
+
