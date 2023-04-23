@@ -2,9 +2,20 @@ import express from 'express';
 import bodyParser from 'body-parser';
 import mysql from 'mysql2';
 import multer from 'multer';
+import fs from 'fs';
+import dotenv from 'dotenv'
+dotenv.config()
+import { Configuration, OpenAIApi} from 'openai';
 const upload = multer();
 const app = express();
+import jsonData from './tech-stack.json' assert {type: 'json'};
+
 app.use(bodyParser.json());
+const configuration = new Configuration({
+    apiKey: process.env.OPENAI_API_KEY,
+  });
+const openai = new OpenAIApi(configuration);
+const inputTags = Object.values(jsonData).flat().map(ele =>ele.name)
 const user_db = mysql.createPool({
     host:'127.0.0.1',
     user:'root',
@@ -47,7 +58,7 @@ app.get('/api/get_users', (req, res) => {
     });
   });
 
-  app.post('/api/create_project',upload.none(), (req, res) => {
+  app.post('/api/create_project',upload.none(), async (req, res) => {
     const {
       projectName,
       projectDescription,
@@ -60,31 +71,40 @@ app.get('/api/get_users', (req, res) => {
       closePost
     } = req.body;
 
+    const completion = await openai.createCompletion({
+        model: "text-davinci-003",
+        prompt: `Among all the tags of ${inputTags} generate the most related tags for this software project:${req.body.projectDescription} with no format separated by space ex: a b c`,
+
+
+    });
+    const relatedTags = await completion.data.choices[0].text;
     const query = `
       INSERT INTO projects (
         project_name,
         project_description,
         project_type,
-        project_status,
         project_start_date,
         project_end_date,
         github_link,
         tasks,
-        close_post
-      ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
+        close_post,
+        project_status,
+        tags
+      ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
     `;
-    const values = [
+    const values =  [
         req.body.projectName,
         req.body.projectDescription,
         req.body.projectType,
-        req.body.projectStatus,
         req.body.projectStartDate,
         req.body.projectEndDate,
         req.body.githubLink,
         JSON.stringify(req.body.tasks),
-        req.body.closePost
+        req.body.closePost,
+        req.body.projectStatus,
+        await relatedTags
       ];
-      project_db.query(query, values, (err, results) => {
+      project_db.query(query,  values,  async (err, results) =>  {
         if (err) {
           res.status(500).send({ error: 'An error occurred while adding the project' });
           throw err;
@@ -93,7 +113,7 @@ app.get('/api/get_users', (req, res) => {
       });
     });
 
-    app.get('/api/projects', (req, res) => {
+    app.get('/api/get_projects', (req, res) => {
         const query = 'SELECT * FROM projects';
 
         db.query(query, (err, results) => {
